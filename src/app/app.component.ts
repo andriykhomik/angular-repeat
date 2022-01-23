@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {IUser} from "./models/User";
+import {UserService} from "./services/user.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `<app-user [users]="users"></app-user>`,
+  styleUrls: []
 })
 export class AppComponent {
-  title = 'ang-cours22';
+  users?: IUser[];
+
+  constructor(private userService: UserService) {
+    this.userService.getAllUsers().subscribe(value => this.users = value);
+  }
 }
