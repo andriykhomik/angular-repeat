@@ -16,4 +16,6 @@ export class UserService {
     return  this.httpClient
       .get<IUser[]>(`https://jsonplaceholder.typicode.com/users`);
   }
+
+
 }
